@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC User Monitoring System - Admin</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mysidebar col-3 d-flex flex-column min-vh-100">
+                <h4 class="text-center mt-2">PC User Monitoring System - Admin</h4>
+                <hr>
+                <ul class="nav flex-column nav-pills nav-fill gap-1 mb-auto">
+                    <li class="nav-item text-start"> 
+                        <a class="nav-link active d-flex align-items-center gap-2 text-white" aria-current="page" href="#">
+                            <img src="./assets/icons/person_add.svg" class="icon-img"> Register/Edit
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown text-start w-100">
+                        <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center gap-2 text-white w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="./assets/icons/people.svg" class="icon-img">List of Users
+                            </div>
+                            <span class="dropdown-toggle-icon"></span>
+                        </a>
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item" href="./list_of_student.html">List of Students</a></li>
+                            <li><a class="dropdown-item" href="./list_of_teacher.html">List of Teachers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown text-start w-100">
+                        <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center gap-2 text-white w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="./assets/icons/log.svg" class="icon-img">Log History
+                            </div>
+                            <span class="dropdown-toggle-icon"></span>
+                        </a>
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item" href="./log_history_room.html">Room</a></li>
+                            <li><a class="dropdown-item" href="./log_history_pc.html">Computer Unit</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-start">
+                        <a class="nav-link d-flex align-items-center gap-2 text-white" href="./settings.html">
+                            <img src="./assets/icons/settings.svg" class="icon-img">Settings
+                        </a>
+                    </li>
+                </ul>
+
+                <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+            </div>
+            <div class="col-9 d-flex justify-content-center align-items-center">
+                <div class="card" style="width:25rem; height: auto; padding:20px;">
+                    <div class="text-center fw-bold fs-5">
+                        Register/Update
+                        <hr>
+                    </div>
+                    <form id="register_form">
+                        <div class="mb-3">
+                            <label for="uid" class="form-label">UID</label>
+                            <input type="text" class="form-control" id="uid" disabled readonly>
+                            <!-- <input type="text" class="form-control" id="uid"> -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="school_id" class="form-label">School ID</label>
+                            <input type="number" class="form-control" id="school_id">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-1">
+                                <div class="dropdown">
+                                    <input type="hidden" id="role" name="role">
+                                    <button id="roleDropdown" class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Role
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownPlaceholder('roleDropdown', 'Student')">Student</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownPlaceholder('roleDropdown', 'Teacher')">Teacher</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="dropdown">
+                                    <input type="hidden" id="gender" name="gender">
+                                    <button id="genderDropdown" class="btn btn-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Gender
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownPlaceholder('genderDropdown', 'Male')">Male</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownPlaceholder('genderDropdown', 'Female')">Female</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="register_btn">Set</button>
+                    </form>
+                </div>
+                <div class="card ms-3" style="width:25rem; height: auto; padding:20px;">
+                    <div class="text-center fw-bold fs-5">
+                        Edit/Delete
+                        <hr>
+                    </div>
+                    <form id="edit_delete_form">
+                        <div class="mb-3">
+                            <label for="search_user" class="form-label">Search User</label>
+                            <input type="number" class="form-control" id="search_user" placeholder="Enter School ID">
+                            <button type="submit" class="btn btn-primary w-100 mt-2" id="search_user_btn">Search</button>
+                        </div>
+                    </form>
+                    <div id="edit_delete_result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Toast Container for stacking -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
+
+    <script type ="module" src="./js/for_all.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="./bootstrap-5.3.6/js/popper.min.js"></script>
+    <script src="./bootstrap-5.3.6/js/bootstrap.bundle.min.js "></script>
+    <script type="module" src="./js/index.js"></script>
+    
+
+</body>
+</html>

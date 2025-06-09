@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC User Monitoring System - Admin</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.6/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mysidebar col-3 d-flex flex-column h-auto min-vh-100">
+                <h4 class="text-center mt-2">PC User Monitoring System - Admin</h4>
+                <hr>
+                <ul class="nav flex-column nav-pills nav-fill gap-1 mb-auto">
+                    <li class="nav-item text-start"> 
+                        <a class="nav-link d-flex align-items-center gap-2 text-white" href="./index.html">
+                            <img src="./assets/icons/person_add.svg" class="icon-img"> Register/Edit
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown text-start w-100">
+                        <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center gap-2 text-white w-100 active" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="./assets/icons/people.svg" class="icon-img">List of Users
+                            </div>
+                            <span class="dropdown-toggle-icon"></span>
+                        </a>
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item" href="#">List of Students</a></li>
+                            <li><a class="dropdown-item" href="./list_of_teacher.html">List of Teachers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown text-start w-100">
+                        <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center gap-2 text-white w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="./assets/icons/log.svg" class="icon-img">Log History
+                            </div>
+                            <span class="dropdown-toggle-icon"></span>
+                        </a>
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item" href="./log_history_room.html">Room</a></li>
+                            <li><a class="dropdown-item" href="./log_history_pc.html">Computer Unit</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-start">
+                        <a class="nav-link d-flex align-items-center gap-2 text-white" href="./settings.html">
+                            <img src="./assets/icons/settings.svg" class="icon-img">Settings
+                        </a>
+                    </li>
+                </ul>
+
+                <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+            </div>
+            <div class="col-9 d-flex flex-column">
+                <h4 class="mt-3">List of Students</h4>
+                <hr>
+                <div class="container w-100 d-flex justify-content-center align-items-center">
+                    <div class="container w-98 h-100 ">
+                        <table id="list_of_students" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>UID</th>
+                                    <th>Name</th>
+                                    <th>School ID</th>
+                                    <th>Gender</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--Automatically populated -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>UID</th>
+                                    <th>Name</th>
+                                    <th>School ID</th>
+                                    <th>Gender</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Toast Container for stacking -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
+
+    <script type ="module" src="./js/for_all.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="./bootstrap-5.3.6/js/popper.min.js"></script>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script src="./bootstrap-5.3.6/js/bootstrap.bundle.min.js "></script>
+    <script src="./js/dataTables.js"></script>
+    <script src="./js/dataTables.bootstrap5.js"></script>
+    <script type="module" src="./js/list_of_student.js"></script>
+</body>
+</html>

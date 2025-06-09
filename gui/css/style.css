@@ -1,0 +1,15 @@
+html,
+body {
+    background-color: #121212;
+}
+
+.mysidebar{
+    height: 100vh;
+    background-color: #282828;
+}
+
+.icon-img {
+    width: 18px; /* or your desired size */
+    height: 18px;
+    object-fit: contain;
+}
