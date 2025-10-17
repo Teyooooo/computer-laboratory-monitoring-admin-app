@@ -2,6 +2,7 @@ import serial
 import serial.tools.list_ports
 import time
 import eel
+import logic.get_data_registered
 
 
 # Globals
@@ -9,7 +10,7 @@ serialInst = None
 receiveUidData = ""
 portsList = []
 notify = False
-ready_to_scan = True
+
 
 
 
@@ -79,7 +80,7 @@ def connectingToDevice():
                         return None
 
 def get_uid():
-    global is_device, notify, ready_to_scan
+    global is_device, notify
 
     while True:
         device = findTheDevice()
@@ -96,11 +97,16 @@ def get_uid():
                 serialInst.write(b'OK\n')
                 time.sleep(1)
 
-                if serialInst.in_waiting and ready_to_scan:
-                    ready_to_scan = False
+                if serialInst.in_waiting :
                     receiveUidData = serialInst.readline().decode('latin-1').rstrip('\n\r')
                     print("Received UID data:", receiveUidData)
-                    eel.receive_uid(receiveUidData)
+                    
+                    if logic.get_data_registered.isUIdRegistered(receiveUidData):
+                        print("UID is registered.")
+                        eel.receive_uid("registered")
+                    else:
+                        print("UID is not registered.")
+                        eel.receive_uid(receiveUidData)
 
 
         except serial.SerialException:
@@ -108,19 +114,6 @@ def get_uid():
             print("Device disconnected.")
             is_device = False
             continue
-
-
-@eel.expose
-def ready_rescan():
-    global ready_to_scan
-    ready_to_scan = True
-
-
-@eel.expose
-def not_ready_rescan():
-    global ready_to_scan
-    ready_to_scan = False
-
 
 
 if __name__ == "__main__":

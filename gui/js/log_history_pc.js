@@ -6,6 +6,21 @@ document.addEventListener("DOMContentLoaded", async function () {
         const data_json = await eel.get_logs_pc()();
         const data = JSON.parse(data_json);
 
+        Object.assign(DataTable.defaults, {
+            searching: true,
+            ordering: true,
+            columnDefs: [
+            {
+                targets: 0,
+                type: "date", // enable date sorting
+            },
+            { 
+                targets: '_all', 
+                type: "string",
+
+            }],
+        });
+
         console.log("Received data:", data);
 
         const tbody = document.querySelector("#log_history_pc tbody");
@@ -15,16 +30,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Loop through data and insert rows
         data.forEach(row => {
-            // id, date, time_in, time_out, pc_name, uid, student_id, name, gender, file_name, file_content
-            const [id, date, time_in, time_out, pc_name, uid, student_id, name, gender, file_name, file_content] = row;
+            const [id, school_id, name, date, time_in, time_out, room, pc_name, file_name, file_content] = row;
 
             const tr = document.createElement("tr");
             tr.innerHTML = `
                 <td>${date}</td>
                 <td>${time_in}</td>
                 <td>${time_out}</td>
-                <td>${student_id}</td>
+                <td>${school_id}</td>
                 <td>${name}</td>
+                <td>${room}</td>
                 <td>${pc_name}</td>
                 <td><button class="btn btn-success w-100 h-80">View</button></td>
             `;
@@ -39,7 +54,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
 
         // Initialize DataTable after populating
-        new DataTable('#log_history_pc');
+        new DataTable('#log_history_pc', {order: [[0, 'desc']]
+        });
 
     } catch (err) {
         showToast("Error: Unable to fetching log history data", {background: "bg-danger", textColor: "text-white" });

@@ -28,15 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `log_history_pc` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `school_id` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `date` varchar(100) NOT NULL,
   `time_in` varchar(100) NOT NULL,
   `time_out` varchar(100) NOT NULL,
+  `room` varchar(100) NOT NULL,
   `pc_name` varchar(100) NOT NULL,
   `file_name` varchar(100) NOT NULL,
-  `file_content` text NOT NULL
+  `file_content` text NOT NULL,
+  ADD PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

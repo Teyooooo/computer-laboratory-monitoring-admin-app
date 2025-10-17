@@ -4,19 +4,23 @@ import eel
 
 @eel.expose
 def add_user(uid, name, school_id, role, gender):
-    
-    """Set data in a database"""
-    mydb = get_connection()
-    mycursor = mydb.cursor()
+    try:
+        """Set data in a database"""
+        mydb = get_connection()
+        mycursor = mydb.cursor()
 
-    if role == "Student" or role == "student":
-        sql = "INSERT INTO registered_students (uid, name, school_id, gender) VALUES (%s, %s, %s, %s)"
-        val = (uid, name, school_id, gender)
-        mycursor.execute(sql, val)
-        mydb.commit()
-    
-    if role == "Teacher" or role == "teacher":
-        sql = "INSERT INTO registered_teachers (uid, name, school_id, gender) VALUES (%s, %s, %s, %s)"
-        val = (uid, name, school_id, gender)
-        mycursor.execute(sql, val)
-        mydb.commit()
+        if role == "Student" or role == "student":
+            sql = "INSERT INTO registered_students (uid, name, school_id, gender) VALUES (%s, %s, %s, %s)"
+            val = (uid, name, school_id, gender)
+            mycursor.execute(sql, val)
+            mydb.commit()
+        
+        if role == "Teacher" or role == "teacher":
+            sql = "INSERT INTO registered_teachers (uid, name, school_id, gender) VALUES (%s, %s, %s, %s)"
+            val = (uid, name, school_id, gender)
+            mycursor.execute(sql, val)
+            mydb.commit()
+        return {"status": "success", "message": "User added successfully."}
+    except Exception as e:
+        print("Error adding user:", e)
+        return {"status": "failed", "message": "Failed to add user."}

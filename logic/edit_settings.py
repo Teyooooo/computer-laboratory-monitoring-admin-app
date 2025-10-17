@@ -9,7 +9,7 @@ def save_settings_to_file(host, user, password, database):
         file.write(f"Password={password}\n")
         file.write(f"Database={database}\n")
 
-
+@eel.expose
 def get_settings_from_file():
     try:
         with open("Settings.txt", "r") as file:
