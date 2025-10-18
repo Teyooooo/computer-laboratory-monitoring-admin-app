@@ -1,86 +1,60 @@
-import { showToast } from './dom_toggle.js';
+import { showToast } from "./dom_toggle.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const ip = await eel.get_ip()();
-    document.getElementById("ip").innerHTML = "IP Address: " + ip;
-    console.log("IP Address: " + ip);
-
-    // const isConnectedToDBjs = sessionStorage.getItem('isConnectedToDB');
-    // const alreadyShownToast = sessionStorage.getItem('shownDBToast');
-
-    // console.log("isConnectedToDBjs: " + isConnectedToDBjs);
-    // console.log("alreadyShownToast: " + alreadyShownToast);
-
-    // if (isConnectedToDBjs === "true" && !alreadyShownToast) {
-    //     showToast("Connected to the database.", {
-    //         background: "bg-success",
-    //         textColor: "text-white"
-    //     });
-    //     sessionStorage.setItem('shownDBToast', 'true');
-    // } else if (isConnectedToDBjs === "false" || isConnectedToDBjs === null) {
-    //     tryingToConnectToDB();
-    // }
+  const ip = await eel.get_ip()();
+  document.getElementById("ip").innerHTML = "IP Address: " + ip;
+  console.log("IP Address: " + ip);
 });
 
-// async function tryingToConnectToDB() {
-//     showToast("Trying to connect to the database...", {
-//         background: "bg-warning",
-//         textColor: "text-dark",
-//         delay: 5000
-//     });
-
-//     setTimeout(async () => {
-//         const isConnectedToDB = await eel.is_connected_to_db()();
-//         console.log("isConnectedToDB: " + isConnectedToDB);
-
-//         if (isConnectedToDB === false) {
-//             showToast("Error: Unable to connect to the database.", {
-//                 background: "bg-danger",
-//                 textColor: "text-white"
-//             });
-//         } else {
-//             showToast("Connected to the database.", {
-//                 background: "bg-success",
-//                 textColor: "text-white"
-//             });
-//         }
-
-//         // Store string version ("true"/"false") to sessionStorage
-//         sessionStorage.setItem('isConnectedToDB', String(isConnectedToDB));
-//     }, 5000);
-// }
-
+document.querySelector("#btn_door_api").addEventListener("click", () => {
+  showToastFromJS("Executing Door API.", "success")
+  eel.run_door_api()();
+});
 
 eel.expose(showToastFromJS);
 function showToastFromJS(message, options) {
-    if(options === "success") {
-        showToast(message, {
-                background: "bg-success",
-                textColor: "text-white"
-            });
-    }else if(options === "warning") {
-        showToast(message, {
-                background: "bg-warning",
-                textColor: "text-dark"
-            });
-    }else if(options === "danger") {
-        showToast(message, {
-                background: "bg-danger",
-                textColor: "text-white"
-            });
-    }
+  if (options === "success") {
+    showToast(message, {
+      background: "bg-success",
+      textColor: "text-white",
+    });
+  } else if (options === "warning") {
+    showToast(message, {
+      background: "bg-warning",
+      textColor: "text-dark",
+    });
+  } else if (options === "danger") {
+    showToast(message, {
+      background: "bg-danger",
+      textColor: "text-white",
+    });
+  }
 }
 
+// eel.expose(clearDBToastLocalStorage);
+// function clearDBToastLocalStorage(){
+//   console.debug("clearing local storage toast db")
+//   localStorage.removeItem("connectedToastShownDB")
+//   localStorage.removeItem("disconnectedToastShownDB")
+// }
 
 eel.expose(triggerToastEvent);
 function triggerToastEvent(status) {
-    const isItShown = sessionStorage.getItem("toastShownDB")
+  const connectedIsItShown = sessionStorage.getItem("connectedToastShownDB");
+  const disconnectedIsItShown = sessionStorage.getItem("disconnectedToastShownDB");
 
-  if (status === "connected" && isItShown) {
+  console.log(connectedIsItShown)
+  console.log(disconnectedIsItShown)
+
+  if (status === "connected" && (connectedIsItShown !== "true")) {
+    console.log(status)
     showToastFromJS("Connected to the database.", "success");
-    sessionStorage.setItem("toastShownDB", true)
-  } else if (status === "disconnected") {
+    sessionStorage.setItem("connectedToastShownDB", "true");
+    sessionStorage.setItem("disconnectedToastShownDB", "false");
+  } else if (status === "disconnected" && (disconnectedIsItShown !== "true")) {
+    console.log(status)
     showToastFromJS("Database connection lost.", "danger");
-    sessionStorage.setItem("toastShownDB", false)
+    sessionStorage.setItem("connectedToastShownDB", "false");
+    sessionStorage.setItem("disconnectedToastShownDB", "true");
   }
 }

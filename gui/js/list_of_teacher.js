@@ -1,3 +1,5 @@
+import { showToast } from "./dom_toggle.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         // Call Python function and parse JSON

@@ -9,6 +9,23 @@ import logic.get_data_registered
 import logic.get_data_logs
 import logic.register_edit_users
 import logic.get_ip
+import os
+import sys
+
+@eel.expose
+def run_door_api():
+    # Start the Door API
+    # Detect if running as compiled .exe or as a script
+    if getattr(sys, 'frozen', False):
+        # If frozen, the .exe is running — use the folder where the .exe is located
+        base_path = os.path.dirname(sys.executable)
+    else:
+        # If running as a normal .py script
+        base_path = os.path.dirname(os.path.abspath(__file__))
+
+    # Go one level up (parent folder)
+    exe_path = os.path.join(base_path, "door_api", "door_api.exe")
+    os.startfile(exe_path)
 
 def find_available_port(start_port, max_port=8100):
     for port in range(start_port, max_port):
@@ -22,6 +39,7 @@ eel.init('gui', allowed_extensions=['.js', '.html'])
 # Start UID polling in a thread
 threading.Thread(target=logic.connect_device.get_uid, daemon=True).start()
 threading.Thread(target=logic.connect_db.checkIfConnected, daemon=True).start()
+
 
 try:
     port = find_available_port(8000)  # Start looking from port 8000

@@ -1,7 +1,7 @@
 export function showToast(message = "Default message", {
     background = "bg-dark",
     textColor = "text-white",
-    delay = 3000
+    delay = 6000
 } = {}) {
     const container = document.getElementById("toast-container");
     if (!container) {
