@@ -54,7 +54,16 @@
                     </li>
                 </ul>
 
-                <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+                <ul class="nav flex-column nav-pills nav-fill gap-1 mt-auto">
+                    <li class="nav-item text-start pb-2">
+                        <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+                    </li>
+                    <li class="nav-item text-start pb-2">
+                        <a class="nav-link d-flex align-items-center gap-2 text-white" href="#" id="logout_btn">
+                            <img src="./assets/icons/logout.svg" class="icon-img">Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="col-10 d-flex justify-content-center align-items-center">
                 <div class="card" style="width:25rem; height: auto; padding:20px;">
@@ -80,6 +89,27 @@
                             <input type="text" class="form-control" id="db_name">
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </form>
+                </div>
+                <div class="card ms-4" style="width:25rem; height: auto; padding:20px;">
+                    <div class="text-center fw-bold fs-5">
+                        Change Password
+                        <hr>
+                    </div>
+                    <form id="change_pass">
+                        <div class="mb-3">
+                            <label for="old_pass" class="form-label">Old Password</label>
+                            <input type="password" class="form-control" id="old_pass">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new_pass" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new_pass">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_pass" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm_pass">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Set</button>
                     </form>
                 </div>
             </div>

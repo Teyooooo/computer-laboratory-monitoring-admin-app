@@ -9,6 +9,7 @@ import logic.get_data_registered
 import logic.get_data_logs
 import logic.register_edit_users
 import logic.get_ip
+import logic.admin_pass
 import os
 import sys
 
@@ -45,11 +46,11 @@ try:
     port = find_available_port(8000)  # Start looking from port 8000
     print(f"Starting Eel on port {port}")
     try:
-        eel.start('index.html', mode='chrome', size=(1800, 1500), port=port)
+        eel.start('login.html', mode='chrome', size=(1800, 1500), port=port)
     except Exception as e:
         print("Failed to start with Chrome:", e)
         print("Starting with default browser")
-        eel.start('index.html', mode='default', size=(1800, 1500), port=port)
+        eel.start('login.html', mode='default', size=(1800, 1500), port=port)
 
 except Exception as e:
     print("Failed to start Eel:", e)

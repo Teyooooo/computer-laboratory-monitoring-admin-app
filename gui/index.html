@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Laboratory Monitoring System - Admin</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./bootstrap-5.3.6/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container-fluid">
@@ -54,7 +54,16 @@
                     </li>
                 </ul>
 
-                <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+                <ul class="nav flex-column nav-pills nav-fill gap-1 mt-auto">
+                    <li class="nav-item text-start pb-2">
+                        <p id="ip" class="text-center mt-auto mb-2 text-muted" ></p>
+                    </li>
+                    <li class="nav-item text-start pb-2">
+                        <a class="nav-link d-flex align-items-center gap-2 text-white" href="#" id="logout_btn">
+                            <img src="./assets/icons/logout.svg" class="icon-img">Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="col-10 d-flex justify-content-center align-items-center">
                 <div class="card" style="width:25rem; height: auto; padding:20px;">

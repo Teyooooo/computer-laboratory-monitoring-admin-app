@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   const ip = await eel.get_ip()();
   document.getElementById("ip").innerHTML = "IP Address: " + ip;
   console.log("IP Address: " + ip);
+
+  const isLogin = sessionStorage.getItem("isLogin")
+  if(!isLogin) window.location.href = "./login.html"
 });
 
 document.querySelector("#btn_door_api").addEventListener("click", () => {
@@ -31,12 +34,6 @@ function showToastFromJS(message, options) {
   }
 }
 
-// eel.expose(clearDBToastLocalStorage);
-// function clearDBToastLocalStorage(){
-//   console.debug("clearing local storage toast db")
-//   localStorage.removeItem("connectedToastShownDB")
-//   localStorage.removeItem("disconnectedToastShownDB")
-// }
 
 eel.expose(triggerToastEvent);
 function triggerToastEvent(status) {
@@ -58,3 +55,9 @@ function triggerToastEvent(status) {
     sessionStorage.setItem("disconnectedToastShownDB", "true");
   }
 }
+
+
+document.querySelector("#logout_btn").addEventListener("click", ()=>{
+    sessionStorage.removeItem("isLogin")
+    window.location.href = "./login.html"
+})

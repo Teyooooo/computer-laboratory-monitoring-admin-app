@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Laboratory Monitoring System - Admin</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./bootstrap-5.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+        <div class="px-3 py-4 d-flex justify-content-center align-items-center" style="background-color: #121212; height: 100vh;">
+            <div class="card" style="width:25rem; height: auto; padding:20px;">
+                <div class="text-center fw-bold fs-5">
+                    Computer Laboratory Monitoring System - Admin
+                    <hr>
+                </div>
+                <form>
+                    <div class="mb-3">
+                        <label for="db_pass" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="admin_pass">
+                    </div>
+                    <button id="login_btn" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Toast Container for stacking -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
+
+    <!-- <script type ="module" src="./js/for_all.js"></script> -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="./bootstrap-5.3.6/js/popper.min.js"></script>
+    <script src="./bootstrap-5.3.6/js/bootstrap.bundle.min.js "></script>
+    <script type="module" src="./js/login.js"></script>
+</body>
+</html>
