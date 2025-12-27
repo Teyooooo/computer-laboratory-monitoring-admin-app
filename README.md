@@ -17,7 +17,7 @@
 
 ### Installation
 
-Download this [version v1.0.0](github.com) and move it to your <b>Drive C:</b> 
+Download this [version v1](https://github.com/Teyooooo/ComputerLaboratoryMonitoringSystem_adminApp/releases/tag/v1) and move it to your <b>Drive C:</b> 
 
 ## Screenshots
 
