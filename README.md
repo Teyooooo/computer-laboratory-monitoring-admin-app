@@ -1,6 +1,6 @@
 # Computer Laboratory Monitoring App
 
-    A Windows App for Monitoring Computer Laboratorys
+A Windows App for Monitoring Computer Laboratories
 
 ## Features
 
@@ -9,13 +9,11 @@
 - Monitoring the App used in Computer Units
 - Monitoring the Teacher used the Room
 
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 - Read [this](https://github.com/Teyooooo/Computer-Laboratory-Monitoring-System)
 
-### Installation
+## Installation
 
 Download this [version v1](https://github.com/Teyooooo/ComputerLaboratoryMonitoringSystem_adminApp/releases/tag/v1) and move it to your <b>Drive C:</b> 
 
